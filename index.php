@@ -9,10 +9,11 @@ class Movie
     public $img_url;
 
     public $cast;
+
+    public $genre;
     /* 
     public $language;
 
-    public $genre;
 
     public $rating; 
  */
@@ -21,9 +22,9 @@ class Movie
         $description,
         $img_url,
         $cast,
+        $genre,
         /* 
         $language,
-        $genre,
         $rating,
          */
     ) {
@@ -31,9 +32,9 @@ class Movie
         $this->description = $description;
         $this->img_url = $img_url;
         $this->cast = $cast;
+        $this->genre = $genre;
         /*  
         $this->language = $language;
-        $this->genre = $genre;
         $this->rating = $rating; 
          */
     }
@@ -53,13 +54,25 @@ class Movie
         return $this->img_url;
     }
 
+    function getGenre()
+    {
+        return $this->genre;
+    }
+
     function getCast()
     {
         return $this->cast;
     }
 }
 
-$movie1 = new Movie('Matrix', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum est?', 'https://cdn.pixabay.com/photo/2016/01/22/08/20/film-1155439_1280.jpg', ['claudio bisio', 'lino banfi']);
+$movies = [];
+
+$matrix = new Movie('Matrix', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum est?', 'https://cdn.pixabay.com/photo/2016/01/22/08/20/film-1155439_1280.jpg', ['claudio bisio', 'lino banfi'], ['action', 'drama']);
+
+$madagascar = new Movie('Madagascar', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum est?', 'https://cdn.pixabay.com/photo/2016/01/22/08/20/film-1155439_1280.jpg', ['Alex il leone', 'la zebra', 'la giraffa'], ['commedia', 'animazione']);
+
+array_push($movies, $matrix, $madagascar);
+var_dump($movies);
 
 ?>
 
@@ -81,22 +94,30 @@ $movie1 = new Movie('Matrix', 'Lorem ipsum dolor sit amet consectetur adipisicin
 
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <div class="card p-2">
+            <div class="row mt-5">
 
-                        <h1>title: <?= $movie1->getTitle() ?></h1>
-                        <small>description:</small>
-                        <p><?= $movie1->getDescription() ?></p>
-                        <img class="img-fluid" src="<?= $movie1->getImg() ?>" alt="immagine">
-                        <span>cast: </span>
-                        <ul>
-                            <?php foreach ($movie1->getCast() as $actor) : ?>
-                                <li><?= $actor; ?></li>
+                <?php foreach ($movies as $movie) : ?>
+
+                    <div class="col-4">
+                        <div class="card p-2">
+                            <h1>title: <?= $movie->getTitle() ?></h1>
+                            <small>description:</small>
+                            <p><?= $movie->getDescription() ?></p>
+                            <img class="img-fluid" src="<?= $movie->getImg() ?>" alt="immagine">
+                            <span>cast: </span>
+                            <ul>
+                                <?php foreach ($movie->getCast() as $actor) : ?>
+                                    <li><?= $actor; ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <small>genre: </small>
+                            <?php foreach ($movie->getGenre() as $genre) : ?>
+                                <span><?= $genre; ?> </span>
                             <?php endforeach; ?>
-                        </ul>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
 
