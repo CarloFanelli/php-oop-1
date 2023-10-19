@@ -1,5 +1,5 @@
 <?php
-
+include __DIR__ . '/db.php';
 class Movie
 {
     public $title;
@@ -11,32 +11,18 @@ class Movie
     public $cast;
 
     public $genre;
-    /* 
-    public $language;
-
-
-    public $rating; 
- */
     function __construct(
         $title,
         $description,
         $img_url,
         $cast,
-        $genre,
-        /* 
-        $language,
-        $rating,
-         */
+        $genre
     ) {
         $this->title = $title;
         $this->description = $description;
         $this->img_url = $img_url;
         $this->cast = $cast;
         $this->genre = $genre;
-        /*  
-        $this->language = $language;
-        $this->rating = $rating; 
-         */
     }
 
     function getTitle()
@@ -65,14 +51,8 @@ class Movie
     }
 }
 
-$movies = [];
 
-$matrix = new Movie('Matrix', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum est?', 'https://cdn.pixabay.com/photo/2016/01/22/08/20/film-1155439_1280.jpg', ['claudio bisio', 'lino banfi'], ['action', 'drama']);
-
-$madagascar = new Movie('Madagascar', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum est?', 'https://cdn.pixabay.com/photo/2016/01/22/08/20/film-1155439_1280.jpg', ['Alex il leone', 'la zebra', 'la giraffa'], ['commedia', 'animazione']);
-
-array_push($movies, $matrix, $madagascar);
-var_dump($movies);
+//var_dump($movies);
 
 ?>
 
