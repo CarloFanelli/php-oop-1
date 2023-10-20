@@ -10,6 +10,7 @@ class Movie
     public $cast;
 
     public $genre;
+
     function __construct(
         $title,
         $description,
@@ -22,6 +23,10 @@ class Movie
         $this->img_url = $img_url;
         $this->cast = $cast;
         $this->genre = $genre;
+    }
+    function getMovieDetails()
+    {
+        return "title : $this->title | Description $this->description";
     }
 
     function getTitle()

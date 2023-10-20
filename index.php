@@ -28,7 +28,7 @@ include __DIR__ . '/db.php';
 
                     <div class="col-4">
                         <div class="card p-2">
-                            <h1>title: <?= $movie->getTitle() ?></h1>
+                            <h1>title: <?= $movie->title ?></h1>
                             <small>description:</small>
                             <p><?= $movie->getDescription() ?></p>
                             <img class="img-fluid" src="<?= $movie->getImg() ?>" alt="immagine">
@@ -46,6 +46,11 @@ include __DIR__ . '/db.php';
                     </div>
                 <?php endforeach; ?>
 
+                <ul>
+                    <?php foreach ($movies as $movie) : ?>
+                        <li><?= $movie->getMovieDetails(); ?></li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
 
